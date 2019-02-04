@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace TimedMathQuiz
 {
     public partial class Form1 : Form
@@ -101,6 +102,19 @@ namespace TimedMathQuiz
             } else
             {
                 return false;
+            }
+        }
+
+        private void answer_Enter(object sender, EventArgs e)
+        {
+            //select the whole answer in the numeric control.
+            
+            NumericUpDown answerBox = sender as NumericUpDown;
+
+            if(answerBox != null)
+            {
+                int lengthOfAnswer = answerBox.Value.ToString().Length;
+                answerBox.Select(0, lengthOfAnswer);
             }
         }
     }
