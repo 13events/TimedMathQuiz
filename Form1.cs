@@ -64,7 +64,16 @@ namespace TimedMathQuiz
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            if (timeLeft > 0)
+
+            if (CheckAnswers())
+            {
+                //if check answers returns TRUE, stop the time.
+                //and show message box.
+                timer1.Stop();
+                MessageBox.Show("You got all the answers right!", "Congradulations!");
+                startButton.Enabled = true;
+            }
+            else if (timeLeft > 0)
             {
                 //display new time left by updating time label. 
                 timeLeft -= 1;
