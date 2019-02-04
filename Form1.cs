@@ -81,5 +81,19 @@ namespace TimedMathQuiz
                 startButton.Enabled = true;
             }
         }
+
+        //checks the answers to see if user got everything right.
+        //Returns true if answers is correct, otherwise returns false.
+        private bool CheckAnswers()
+        {
+            if(addend1 + addend2 == sum.Value)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
     }
+        
 }
