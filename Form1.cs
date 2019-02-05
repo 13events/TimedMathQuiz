@@ -20,6 +20,10 @@ namespace TimedMathQuiz
         int addend1;
         int addend2;
 
+        //track variables for minus equation
+        int minuend;
+        int subtrahend;
+
         //keeps track of remaining time.
         int timeLeft;
 
@@ -42,6 +46,13 @@ namespace TimedMathQuiz
 
             //make sure to set sum button control value to zero
             sum.Value = 0;
+
+            //fill in subtraction problem
+            minuend = randomizer.Next(1,101);
+            subtrahend = randomizer.Next(1, minuend);
+            minusLeftLabel.Text = minuend.ToString();
+            minusRightLabel.Text = subtrahend.ToString();
+            difference.Value = 0;
 
             //start the timer
             timeLeft = 30;
@@ -87,8 +98,15 @@ namespace TimedMathQuiz
                 timer1.Stop();
                 timeLabel.Text = "Time is up!";
                 MessageBox.Show("You didn't finish in time.", "Sorry!");
+
+                //fill in answers
                 sum.Value = addend1 + addend2;
+
+                difference.Value = minuend - subtrahend;
+
+                //set start button state
                 startButton.Enabled = true;
+
             }
         }
 
@@ -96,7 +114,7 @@ namespace TimedMathQuiz
         //Returns true if answers is correct, otherwise returns false.
         private bool CheckAnswers()
         {
-            if(addend1 + addend2 == sum.Value)
+            if(addend1 + addend2 == sum.Value && minuend - subtrahend == difference.Value)
             {
                 return true;
             } else
